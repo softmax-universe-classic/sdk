@@ -1,0 +1,28 @@
+{
+  "id": "store-client-calls",
+  "language": "TypeScript",
+  "severity": "error",
+  "message": "Only the owning store may query or mutate persisted records.",
+  "files": ["platform/src/**/*.ts"],
+  "ignores":
+    [
+      "**/node_modules/**",
+      "**/dist/**",
+      ".contracts/**",
+      ".local/**",
+      "bazel-*/**",
+      "platform/src/store/**",
+    ],
+  "rule":
+    {
+      "any":
+        [
+          { "pattern": "$DB.query($$$ARGS)" },
+          { "pattern": "$DB.select($$$ARGS)" },
+          { "pattern": "$DB.insert($$$ARGS)" },
+          { "pattern": "$DB.update($$$ARGS)" },
+          { "pattern": "$DB.execute($$$ARGS)" },
+        ],
+    },
+  "constraints": { "DB": { "not": { "pattern": "$CONTEXT.req" } } },
+}

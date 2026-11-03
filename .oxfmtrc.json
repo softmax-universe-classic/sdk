@@ -1,0 +1,3 @@
+{
+  "ignorePatterns": ["infra/chart/templates/**", ".contracts/**/assets/**", "protocol/schemas/**"]
+}

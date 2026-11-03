@@ -1,10 +1,13 @@
-import type { Json, ModelCall, ToolCall } from "@softmax-universe/sdk";
-import type { PolicyInput } from "@softmax-universe/runner";
+import { jsonSchema, type ModelCall, type ToolCall } from "@softmax-universe/protocol";
+import type { PolicyInput } from "@softmax-universe/protocol";
 import type { BoundedTurn } from "./protocol.js";
-import { MechanePolicyError } from "./transport.js";
+import { MechanePolicyError } from "./transport/index.js";
 
-function object(value: Json | undefined): Record<string, Json> | undefined {
-  if (value !== null && typeof value === "object" && !Array.isArray(value)) return value;
+type RuntimeJson = BoundedTurn["dispatch_evidence"][number]["request"];
+
+function object(value: RuntimeJson | undefined): Record<string, RuntimeJson> | undefined {
+  if (value !== null && typeof value === "object" && !Array.isArray(value))
+    return value as Record<string, RuntimeJson>;
   return undefined;
 }
 
@@ -14,7 +17,7 @@ function elapsed(start: string | undefined, end: string | undefined): number | n
   return milliseconds < 0 ? null : milliseconds;
 }
 
-function serialize(value: Json): string {
+function serialize(value: RuntimeJson): string {
   const encoded = JSON.stringify(value);
   if (encoded.length > 200_000) throw new MechanePolicyError("evidence_too_large");
   return encoded;
@@ -63,7 +66,7 @@ export function createEvidenceRecorder(input: PolicyInput) {
         latencyMs: elapsed(payload?.started_at, payload?.ended_at),
         status,
       };
-      if (dispatch?.basis === "usage") {
+      if (dispatch?.status === "settled" && dispatch.basis === "usage") {
         if (
           dispatch.input_tokens !== undefined &&
           dispatch.cache_read_tokens !== undefined &&
@@ -86,8 +89,8 @@ export function createEvidenceRecorder(input: PolicyInput) {
       const call: ToolCall = {
         id: payload.id,
         name: payload.name,
-        input: payload.input,
-        output: payload.output ?? null,
+        input: jsonSchema.parse(payload.input),
+        output: jsonSchema.parse(payload.output ?? null),
         latencyMs: elapsed(payload.started_at, payload.ended_at),
         status: payload.status,
       };

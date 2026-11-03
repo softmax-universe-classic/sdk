@@ -1,0 +1,67 @@
+{
+  "exclusions": [
+    {
+      "pattern": "**/node_modules/**",
+      "reason": "Installed dependencies are third-party source."
+    },
+    {
+      "pattern": "**/dist/**",
+      "reason": "Compilers generate distribution output here."
+    },
+    {
+      "pattern": "**/.git/**",
+      "reason": "Git metadata is repository data."
+    },
+    {
+      "pattern": ".local/**",
+      "reason": "Ignored developer proofs and temporary working data."
+    },
+    {
+      "pattern": "bazel-*/**",
+      "reason": "Bazel generates action outputs and dependency trees."
+    },
+    {
+      "pattern": "release-artifacts/**",
+      "reason": "Checked release artifacts are generated output."
+    },
+    {
+      "pattern": "**/.wrangler/**",
+      "reason": "Wrangler generates local runtime state."
+    },
+    {
+      "pattern": "**/fixtures/**",
+      "reason": "Fixture inputs are data consumed by tests."
+    }
+  ],
+  "extensionlessSources": "shebang",
+  "maximumFilesPerExtension": 20,
+  "maximumFolderDepth": 4,
+  "maximumSourceLines": 300,
+  "sourceFiles": [],
+  "sourceRoots": [
+    "protocol/src",
+    "protocol/scripts",
+    "sdk/src",
+    "sdk/test",
+    "runner/src",
+    "runner/test",
+    "integrations/model-policy/src",
+    "integrations/mechane/src",
+    "integrations/mechane/test",
+    "scripts"
+  ],
+  "sourceSuffixes": [
+    ".cjs",
+    ".css",
+    ".cts",
+    ".js",
+    ".jsx",
+    ".mjs",
+    ".mts",
+    ".py",
+    ".rs",
+    ".sh",
+    ".ts",
+    ".tsx"
+  ]
+}

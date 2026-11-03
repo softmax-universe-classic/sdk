@@ -1,0 +1,19 @@
+{
+  "id": "owned-re-exports-js",
+  "language": "JavaScript",
+  "severity": "error",
+  "message": "Re-export through an index module, or import the symbol from its owner.",
+  "files":
+    ["**/src/**/*.ts", "**/src/**/*.tsx", "**/src/**/*.mts", "scripts/**/*.mjs", "infra/**/*.mjs"],
+  "ignores":
+    [
+      "**/node_modules/**",
+      "**/dist/**",
+      ".contracts/**",
+      ".local/**",
+      "bazel-*/**",
+      "**/index.{ts,tsx,mts,js,mjs}",
+      "identity/api/src/worker.ts",
+    ],
+  "rule": { "kind": "export_statement", "has": { "field": "source", "kind": "string" } },
+}

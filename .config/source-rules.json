@@ -1,0 +1,62 @@
+{
+  "forbidden": [
+    {
+      "name": "acyclic-source-imports",
+      "severity": "error",
+      "from": {},
+      "to": {
+        "circular": true
+      }
+    },
+    {
+      "name": "benchmark-has-no-node-composition",
+      "severity": "error",
+      "from": {
+        "path": "(^|/)src/benchmark/"
+      },
+      "to": {
+        "path": "(^|/)src/(storage|files|run-benchmark|cli)(/|\\.)|^node:"
+      }
+    },
+    {
+      "name": "store-has-no-http-or-connection-composition",
+      "severity": "error",
+      "from": {
+        "path": "(^|/)src/store/"
+      },
+      "to": {
+        "path": "(^|/)src/(app|connections|server)(/|\\.)|^node:http|(^|/)node_modules/hono/"
+      }
+    },
+    {
+      "name": "http-has-no-database-driver",
+      "severity": "error",
+      "from": {
+        "path": "(^|/)src/app/"
+      },
+      "to": {
+        "path": "(^|/)node_modules/pg/|(^|/)src/connections/"
+      }
+    },
+    {
+      "name": "production-does-not-import-policy-adapters",
+      "severity": "error",
+      "from": {
+        "path": "(^|/)src/"
+      },
+      "to": {
+        "path": "(^|/)integrations/(model-policy|mechane)/"
+      }
+    },
+    {
+      "name": "policy-adapters-do-not-import-runner",
+      "severity": "error",
+      "from": {
+        "path": "(^|/)src/"
+      },
+      "to": {
+        "path": "(^|/)runner/(src|dist)/"
+      }
+    }
+  ]
+}

@@ -1,10 +1,10 @@
 # Universe SDK
 
-Record game decisions, validate episode evidence, upload saved work, and compare declared trials. This package works
-in browsers and Node and depends only on Zod. The game remains responsible for legal actions and outcomes.
+Record game decisions and upload saved work. This package works in browsers and Node and depends on the
+[Universe protocol](../protocol/README.md) for recording validation. The game remains responsible for legal actions and outcomes.
 
 ```sh
-pnpm add https://github.com/softmax-universe/sdk/releases/download/sdk-v0.2.0-alpha.1/softmax-universe-sdk-0.2.0-alpha.1.tgz
+pnpm add https://github.com/softmax-universe/sdk/releases/download/sdk-v0.3.0-alpha.1/softmax-universe-sdk-0.3.0-alpha.1.tgz
 ```
 
 [Public releases](https://github.com/softmax-universe/sdk/releases) contain immutable package archives and their
@@ -16,7 +16,8 @@ Define a version 2 `Run` with its game version, trial seeds, and participants be
 a seat within a trial; its policy and optional model identify who plays that seat. Every trial has a unique ID.
 
 ```ts
-import { createRecorder, runSchema } from "@softmax-universe/sdk";
+import { createRecorder } from "@softmax-universe/sdk";
+import { runSchema } from "@softmax-universe/protocol";
 
 const run = runSchema.parse({
   schemaVersion: 2,
@@ -101,41 +102,12 @@ validated `{schemaVersion, exportedAt, run, episodes}` document. Every method ac
 `UniverseApiError` exposes `status` and `code`; its message excludes raw server bodies. Network and abort errors use
 status `0` with `NETWORK_ERROR` and `ABORTED` respectively.
 
-## Comparison
+## Protocol and development
 
-```ts
-import { summarizeRun } from "@softmax-universe/sdk";
+Schemas, validators, game/policy interfaces, and result summaries belong to
+[`@softmax-universe/protocol`](../protocol/README.md). Import these directly from that package. The SDK exports
+`createRecorder` and `createClient`; it does not forward the protocol's API.
 
-const rows = summarizeRun(downloaded.run, downloaded.episodes);
-```
-
-Rows group participant appearances by kind, policy, and configured model. Each row includes participant labels,
-planned and played counts, all outcome counts, missing coverage, decisions, and model usage. A policy playing
-both seats contributes two appearances per trial. `played` means a saved episode exists, including unfinished work.
-
-Only terminated episodes contribute to `averageScore`; it is `null` without terminated evidence. Truncated, failed,
-cancelled, incomplete, and missing work never become ordinary scores. A latency, token, or cost total is `null` if any
-recorded model call lacks that measurement or any reserved calls remain unresolved. With no calls or reservations,
-totals are zero. Every observed dispatch contributes independently. Tool calls and unresolved reservations have separate
-counts. Model-call evidence preserves the provider's resolved model while comparison rows identify the configured model.
-
-## Schemas and development
-
-The package includes JSON Schema 2020-12 files at `@softmax-universe/sdk/schemas/run.schema.json`,
-`@softmax-universe/sdk/schemas/episode.schema.json`, and `@softmax-universe/sdk/schemas/run-export.schema.json`.
-These describe structural validation. Use the SDK validators for relationships such as participant membership,
-contiguous indices, outcome timestamps, and matching an episode to its declared trial.
-
-The source package builds independently with its self-contained TypeScript configuration:
-
-```sh
-pnpm install
-pnpm build
-pnpm type-check
-pnpm test
-pnpm pack
-```
-
-Build regenerates the distributable schemas. The packed artifact contains compiled JavaScript, declarations, schema
-files, this README, and the MIT license. Recordings remain private data; downloading them does not grant publication,
-redistribution, or training rights.
+Run `pnpm build`, `pnpm type-check`, and `pnpm test` from the repository root. A packed SDK contains compiled
+JavaScript, declarations, this README, and the MIT license. Recordings remain private data; downloading them does
+not grant publication, redistribution, or training rights.

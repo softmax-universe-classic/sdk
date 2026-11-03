@@ -1,0 +1,36 @@
+{
+  "name": "@softmax-universe/protocol",
+  "version": "0.3.0-alpha.1",
+  "description": "Runtime-neutral game, policy, and recording contracts for Softmax Universe.",
+  "license": "MIT",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "schemas"
+  ],
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./schemas/run.schema.json": "./schemas/run.schema.json",
+    "./schemas/episode.schema.json": "./schemas/episode.schema.json",
+    "./schemas/run-export.schema.json": "./schemas/run-export.schema.json"
+  },
+  "scripts": {
+    "build": "node -e \"require('node:fs').rmSync('dist', { recursive: true, force: true })\" && tsc -p tsconfig.json && node scripts/export-schemas.mjs",
+    "prepack": "pnpm run build",
+    "type-check": "tsc -p tsconfig.check.json"
+  },
+  "dependencies": {
+    "zod": "4.4.3"
+  },
+  "devDependencies": {
+    "@types/node": "24.13.6",
+    "tsx": "4.23.1",
+    "typescript": "7.0.2"
+  }
+}

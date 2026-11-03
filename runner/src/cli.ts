@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 import { parseArgs } from "node:util";
 import { resolve } from "node:path";
-import { RunnerError, safeError } from "./errors.js";
-import { exportDataset, uploadDirectory } from "./transfer.js";
+import { RunnerError, safeError } from "./errors/index.js";
+import { exportDataset, uploadDirectory } from "./transfer/index.js";
 
 const help = `Usage:
   universe upload <directory> --endpoint <url> --project <id> --key-env <variable>

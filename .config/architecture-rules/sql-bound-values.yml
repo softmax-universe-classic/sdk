@@ -1,0 +1,24 @@
+{
+  "id": "sql-bound-values",
+  "language": "TypeScript",
+  "severity": "error",
+  "message": "Bind SQL values; only migration and privilege composition may interpolate validated identifiers.",
+  "files": ["platform/src/store/**/*.ts"],
+  "ignores":
+    [
+      "**/node_modules/**",
+      "**/dist/**",
+      ".contracts/**",
+      ".local/**",
+      "bazel-*/**",
+      "platform/src/store/database/**",
+    ],
+  "rule":
+    {
+      "any":
+        [
+          { "pattern": "$DB.query(`$$$BEFORE${$VALUE}$$$AFTER`, $$$ARGS)" },
+          { "pattern": "$DB.query($LEFT + $RIGHT, $$$ARGS)" },
+        ],
+    },
+}

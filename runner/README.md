@@ -4,7 +4,7 @@
 configured Universe API. It requires Node 24.14.1 or later. Games own their rules, legal actions, observations, and scores.
 
 ```sh
-pnpm add https://github.com/softmax-universe/sdk/releases/download/sdk-v0.2.0-alpha.1/softmax-universe-runner-0.2.0-alpha.1.tgz
+pnpm add https://github.com/softmax-universe/sdk/releases/download/sdk-v0.3.0-alpha.1/softmax-universe-runner-0.3.0-alpha.1.tgz
 ```
 
 [Public releases](https://github.com/softmax-universe/sdk/releases) contain immutable package archives and their
@@ -16,7 +16,8 @@ An integration supplies a `Run`, a `createGame(trial, signal)` function, and pol
 `policy` value. This abbreviated example shows their composition:
 
 ```ts
-import { createModelPolicy, runBenchmark } from "@softmax-universe/runner";
+import { runBenchmark } from "@softmax-universe/runner";
+import { createModelPolicy } from "@softmax-universe/model-policy";
 
 const result = await runBenchmark({
   run,
@@ -45,7 +46,8 @@ const result = await runBenchmark({
 });
 ```
 
-The exported [GameSession, Policy, and BenchmarkOptions types](src/types.ts) define the integration. A game session
+The [protocol's GameSession and Policy types](../protocol/src/policy.ts) define game and policy integration.
+[BenchmarkOptions](src/benchmark/types.ts) defines runner composition. A game session
 returns the current participant, observation, and legal actions from `getTurn`. Its `apply` method returns the actual
 acceptance decision, accepted action, and next observation. `getOutcome` returns scores only when the game has ended.
 Async methods must honor their `AbortSignal`; `close` must release resources promptly.
@@ -105,7 +107,7 @@ lock behind. Inspect its PID and saved evidence, confirm the owning process has 
 The next invocation still skips the existing episode. SIGKILL cannot save evidence that had not reached a checkpoint.
 
 `saveRun(directory, run)` and `saveEpisode(directory, run, episode)` also persist completed human recordings. Both are
-immutable and idempotent. `readRunDirectory(directory)` validates local documents through the public SDK. Keep recording
+immutable and idempotent. `readRunDirectory(directory)` validates local documents through the protocol. Keep recording
 directories private; files are created with owner-only permissions.
 
 ## Upload and export

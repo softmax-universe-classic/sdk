@@ -1,6 +1,6 @@
 {
   "name": "@softmax-universe/runner",
-  "version": "0.2.0-alpha.1",
+  "version": "0.3.0-alpha.1",
   "description": "Run bounded local game benchmarks and upload saved Universe recordings.",
   "license": "MIT",
   "bin": {
@@ -20,14 +20,15 @@
   },
   "scripts": {
     "build": "node -e \"require('node:fs').rmSync('dist', { recursive: true, force: true })\" && tsc -p tsconfig.json",
-    "type-check": "tsc -p tsconfig.json --noEmit",
+    "type-check": "tsc -p tsconfig.check.json",
     "test": "node --import tsx --test --test-timeout=15000 test/*.test.ts"
   },
   "dependencies": {
-    "@softmax-foundation/models": "https://github.com/Metta-AI/foundation-models/releases/download/models-v0.1.0/softmax-foundation-models-0.1.0.tgz",
+    "@softmax-universe/protocol": "workspace:*",
     "@softmax-universe/sdk": "workspace:^"
   },
   "devDependencies": {
+    "@softmax-universe/model-policy": "workspace:*",
     "@types/node": "24.13.6",
     "tsx": "4.23.1",
     "typescript": "7.0.2"

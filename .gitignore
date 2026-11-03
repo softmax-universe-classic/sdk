@@ -6,4 +6,6 @@ dist/
 !.env.example
 *.tgz
 *.tsbuildinfo
+__pycache__/
+*.pyc
 .DS_Store

@@ -1,0 +1,114 @@
+{
+  "version": 2,
+  "sources": {
+    "tenet": "https://github.com/macromackie/tenet-contracts"
+  },
+  "contracts": {
+    ".contracts/008-code-dependency-boundaries/CONTRACT.md": {
+      "source": "tenet",
+      "contract": "code-dependency-boundaries",
+      "ref": "v13.0.1",
+      "commit": "01e7ac85f524a5446d04941e7db895af0b24f817",
+      "hash": "blake3:b346b6fbbbf4d5b8c573e11229d1a065acdba1aaf2619209a40130bc2b4e0741",
+      "files": {
+        "assets/npm/package-lock.json": "blake3:253910029d1b13d157da0e16a1afaa47158fdfeda29078b394f88338db64f158",
+        "assets/npm/package.json": "blake3:950c437dad4f9888245d4fd67c3ce1253685ad85bad2910cd47290c839414c7b",
+        "assets/uv/README.md": "blake3:ddba01329bfae001e751f6b7967878bf15c0284965faf573c7a5afba08c01c22",
+        "assets/uv/check-package-boundaries.py": "blake3:cf05a17560eb1c0513f7e0b4130024f27d0c7293286e78e5dc5ed665cd42995a",
+        "assets/uv/check-package-boundaries.py.lock": "blake3:f680c97c25d129cb9beea1aa1407f6f790e357282bd472cb5f07edba8d271a84",
+        "assets/uv/dependencies/__init__.py": "blake3:a4a5e72bc2fb49ade82815f305fa9ea1f09e0b60320c8d1aa4b1ba3171b11e7b",
+        "assets/uv/dependencies/arguments.py": "blake3:f6b51be4f20b1e2e508ab254a058acb7bff76204a23ecde8b1665d20985d80a8",
+        "assets/uv/dependencies/cargo.py": "blake3:68e4edff3756562263180cea1439eb0096d287d6b76bdcc9336da4e81219d09b",
+        "assets/uv/dependencies/constants.py": "blake3:bc8f508dd2c4d06bd59af94d613edf2840e7499af9a0e6a0edcefe8a58f7a11f",
+        "assets/uv/dependencies/errors.py": "blake3:d92fc48ab83edf7ad4440dabe039e78222547ef132e87895cf5e5b803fc35bcc",
+        "assets/uv/dependencies/inspect_dependencies.py": "blake3:2aaa1e0af5297bcd4883e17cc9021fc1272990213f316cdaccc5a66c9240b134",
+        "assets/uv/dependencies/inspect_graph.py": "blake3:b66f54d699a9faffb5f9d9b3bbe272b4cd675b344ab659f525c30f09a99530c0",
+        "assets/uv/dependencies/inventory.py": "blake3:b35d83c7f9f2f9ddca83999cd760413328512ba01f758c0983fcde3bf5640281",
+        "assets/uv/dependencies/model.py": "blake3:5ab960d847067c01096f3f920c320ee0b754dacf6dc705954f9eb576024c9d72",
+        "assets/uv/dependencies/node.py": "blake3:0be28e9353a60251078d20dcc393bb7bbdf8a48501a7edd6abd0137cd262d95c",
+        "assets/uv/dependencies/node_issues.py": "blake3:255eeac00d2b558ec75a0ff52cc04973f1a1f5a313081b89ca7cf76e56feef16",
+        "assets/uv/dependencies/node_report.py": "blake3:465d0f9c1c2fd99ecbcbd3f9cb43909edda6bcffe927bf61a46192e578a4bc81",
+        "assets/uv/dependencies/projection.py": "blake3:c4a9d803883fba072ae5847adaade82601776863da63347888fb611d23eb8b16",
+        "assets/uv/dependencies/read_node_manifests.py": "blake3:31f5c8c6c117544ffa068e36a1e812a4934ff6d31f3896a6a4c9136d4480f90f",
+        "assets/uv/dependencies/read_policy.py": "blake3:c8a1658cb2c4b2ef56e20fb95bd73905ac16fa6fe3180b8a2be11ba3e6e617a0",
+        "assets/uv/dependencies/read_source_owner.py": "blake3:fa11b824e44f5a9d874b09def7491c64cafc8c8ca06092a034596369b7961d30",
+        "assets/uv/dependencies/read_source_rules.py": "blake3:c426358665388205294aacb6938237b4e3064d3640aeb128bb207f2d9e09fc0e",
+        "assets/uv/dependencies/resolve_node_sources.py": "blake3:3fa1ff622a4b26348824478b65d2ba309e84848b740f66c820833d2ece913ae2",
+        "assets/uv/dependencies/rust/__init__.py": "blake3:b0a8477dead6888dfeb496fdaa2b9a84003ea6d753496d4c21501d17b0cc3518",
+        "assets/uv/dependencies/rust/constants.py": "blake3:afba33399a72b6974a045b87aef17c0a5944b827fed5ea030241155a2adc9eef",
+        "assets/uv/dependencies/rust/literals.py": "blake3:50557a6c7125b47114f0d1e8c9eaec4cd9b6f7895c9d64077bc2ccb1a6fda8c2",
+        "assets/uv/dependencies/rust/scan.py": "blake3:c2a29dbb75d571e8be9f6e9d40dd48c81f0139ed0257ac768ee483cb88b46a17",
+        "assets/uv/dependencies/rust_sources.py": "blake3:5a7f1e485365ba2cc51ee35a0141a61539e1e65ec3c79f2c6a81699c4c78b28a",
+        "assets/uv/dependencies/validate_policy.py": "blake3:42a96fd8bf7ced71868ce494de4aef0122ee542d3c50e9e2bc07542856c4fb29",
+        "assets/uv/package-boundaries.json": "blake3:09d03a3c8aea9b9296a3df3763d1ac88cff0633d29d61fda25a691f9a129d2a1",
+        "assets/uv/package-boundaries.schema.json": "blake3:9a48b5ac2d28acec938f745eb3e59730c0e7b4ea77fa2615d63a645f6d5d7243"
+      }
+    },
+    ".contracts/009-code-typescript-module-boundaries/CONTRACT.md": {
+      "source": "tenet",
+      "contract": "code-typescript-module-boundaries",
+      "ref": "v13.0.1",
+      "commit": "01e7ac85f524a5446d04941e7db895af0b24f817",
+      "hash": "blake3:4b943ccb33f1863c81c6337b0574c37df760fd550bd1b43cc354ee9ad708afca",
+      "files": {
+        "assets/oxlint/oxlintrc.json": "blake3:5adb0451dd28580b466d9791fa04a4101bb4cc19e617fdc8f8d32579a42a79e2"
+      }
+    },
+    ".contracts/010-code-typescript-entry-points/CONTRACT.md": {
+      "source": "tenet",
+      "contract": "code-typescript-entry-points",
+      "ref": "v13.0.1",
+      "commit": "01e7ac85f524a5446d04941e7db895af0b24f817",
+      "hash": "blake3:b529d12ef38b9dd184d46e30b4990b9639487549ef01a3ce9800cc976526b2d0"
+    },
+    ".contracts/011-code-module-file-roles/CONTRACT.md": {
+      "source": "tenet",
+      "contract": "code-module-file-roles",
+      "ref": "v13.0.1",
+      "commit": "01e7ac85f524a5446d04941e7db895af0b24f817",
+      "hash": "blake3:9d8bd6a25aa83920e9ee0394d85dbd8ae696731de5c519262f14065515c64a06",
+      "files": {
+        "assets/ast-grep/rules/exported-functions-javascript.yml": "blake3:985964b45cf963655eed12dff71340fad693c0ac1956c02dde136ead1c73e953",
+        "assets/ast-grep/rules/exported-functions-tsx.yml": "blake3:d7e880832021cffc3d40847143109d4c6ac62738945880dc760b2c641c81be62",
+        "assets/ast-grep/rules/exported-functions-typescript.yml": "blake3:959f94152662996f8af64afab922607cd5902cfda6780a19a56188e98f1ef8f8",
+        "assets/ast-grep/sgconfig.yml": "blake3:4967b38bb4ba6ece87c16fac673aea2d6132e9177a80494ddfd2cf0c95f9d446",
+        "assets/ast-grep/utils/framework-exports.yml": "blake3:eb461e85ecefff60f832d5c5387d4acbff61306a5da14b7dec02603ea893dc80",
+        "assets/oxlint/oxlintrc.json": "blake3:93a0f5a4ca008b9b27f141c44222ebf3d7c3eab35cadc2b5b3a470deb5a41fae"
+      }
+    },
+    ".contracts/012-code-folder-size/CONTRACT.md": {
+      "source": "tenet",
+      "contract": "code-folder-size",
+      "ref": "v13.0.1",
+      "commit": "01e7ac85f524a5446d04941e7db895af0b24f817",
+      "hash": "blake3:54a0818b4304328cc4f176755a793c6b60b7a09de29ea7dd35b684814fe23e0b",
+      "files": {
+        "assets/uv/README.md": "blake3:d650e4c3813e33ee4d1ad34eb91a9fcc958cb09caca2ef7dddff13ee0c0dc1c3",
+        "assets/uv/check-layout.py": "blake3:810e714ea6aa1674b9832f21e22014fe01389de28d6203ede3dacf504fa088ad",
+        "assets/uv/file-layout.json": "blake3:700bf7034f3ff291f60f80b97bf165aff17fc992bfb1e31daae1146aa5391c93",
+        "assets/uv/file-layout.schema.json": "blake3:e6718935c8a9e78ec6312b45a67b3d34cf30882c8780a0603825c669f72bba39",
+        "assets/uv/layout/__init__.py": "blake3:9762c38ad4a282fdb0ad21699b9835e33856e37eb9705d1f8b13ae31e73d6a6c",
+        "assets/uv/layout/check_source_length.py": "blake3:b8d44160b7410aabf6d64727eef54b1dd66656bd4dd939e7032a93a74baac352",
+        "assets/uv/layout/constants.py": "blake3:b6cd94743273629f1b7fd4e17771b4d780a9a3bfb9d62bd58a5db082bd53404a",
+        "assets/uv/layout/errors.py": "blake3:b52bacc38a083ae52a02c728e0380ed8bfb0cfc98ec5e22e52f2560f608a3469",
+        "assets/uv/layout/inspect_layout.py": "blake3:6e90d83acd8789356112f7337b88c38287321e472f48cb05ede81c7ad7e514db",
+        "assets/uv/layout/read_layout.py": "blake3:5fe434fd85aeefa7ef1f22df3e6d7d8c6b7c599326dab43da561b44d3075aed4",
+        "assets/uv/layout/types.py": "blake3:dd0b700bd4fdbd4a3fcdb5864b9974bbc13358e2a36947c99e72a532f69befc2"
+      }
+    },
+    ".contracts/013-data-store-ownership/CONTRACT.md": {
+      "source": "tenet",
+      "contract": "data-store-ownership",
+      "ref": "v13.0.1",
+      "commit": "01e7ac85f524a5446d04941e7db895af0b24f817",
+      "hash": "blake3:bc2a76dcd9e702360bc8e16d97af62f18958e0d5f254b3b940f61a3346454206"
+    },
+    ".contracts/014-data-sql-store-boundaries/CONTRACT.md": {
+      "source": "tenet",
+      "contract": "data-sql-store-boundaries",
+      "ref": "v13.0.1",
+      "commit": "01e7ac85f524a5446d04941e7db895af0b24f817",
+      "hash": "blake3:6d706ba971280f4bfd6bdb99cb2cb365cddc2ec61a3c35c985a56dfd9dad8c75"
+    }
+  }
+}

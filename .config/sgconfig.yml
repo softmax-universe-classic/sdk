@@ -1,0 +1,5 @@
+ruleDirs:
+  - architecture-rules
+  - ../.contracts/011-code-module-file-roles/assets/ast-grep/rules
+utilDirs:
+  - ../.contracts/011-code-module-file-roles/assets/ast-grep/utils

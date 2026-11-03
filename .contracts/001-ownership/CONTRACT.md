@@ -5,14 +5,15 @@ message: Keep public packages independent and game decisions with the game.
 
 ## Rules
 
-The `sdk` package owns wire schemas, recording values, HTTP transport, and shared result interpretation. It must work
-without Node built-ins, private packages, or repository-relative runtime imports.
+The `protocol` package owns wire schemas, validation, result summaries, and game/policy interfaces. It has no I/O.
+The `sdk` package owns recording and HTTP transport. Both work without Node built-ins, private packages, or
+repository-relative runtime imports.
 
 The `runner` package owns Node persistence, policy execution, and its CLI. `platform` owns product persistence and
 authorization. `client` renders the product API. Import another package through its declared exports.
 
-Foundation's public `models` package owns provider transport and model request evidence. Universe's model policy owns
-the game prompt and legal-action selection. `integrations/mechane` adapts the published bounded-turn HTTP protocol;
+Foundation's public `models` package owns provider transport and model request evidence. Universe's `integrations/model-policy` package owns
+the game prompt and legal-action selection. `integrations/mechane` adapts the canonical published Mechane client and its bounded-turn protocol;
 Mechane owns durable agent execution. Do not copy provider transports or Mechane's execution engine into Universe.
 
 Foundation owns accounts, login sessions, OAuth clients, and token verification. Universe owns projects and their
@@ -25,4 +26,5 @@ dependency. The runner submits actions and records the game's actual answer. Do 
 ## Checks
 
 Run `pnpm build` and `pnpm type-check` from the root. Install packed SDK and runner artifacts in the external game.
-Review package dependencies and the path from policy action to game result.
+Run `pnpm architecture:check` for the declared package graph, source direction, entry points, file roles, and stores.
+Review the path from policy action to game result.

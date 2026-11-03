@@ -1,3 +1,9 @@
 [tools]
+uv = "0.12.9"
+python = "3.14.7"
+"github:macromackie/tenet" = "0.13.0"
 node = "24.14.1"
 pnpm = "10.33.2"
+
+[settings]
+lockfile = true

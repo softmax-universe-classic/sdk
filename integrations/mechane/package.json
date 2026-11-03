@@ -1,6 +1,6 @@
 {
   "name": "@softmax-universe/mechane",
-  "version": "0.2.0-alpha.1",
+  "version": "0.3.0-alpha.1",
   "description": "Use bounded Mechane agent turns as Universe game policies.",
   "license": "MIT",
   "files": [
@@ -17,15 +17,17 @@
   },
   "scripts": {
     "build": "node -e \"require('node:fs').rmSync('dist', { recursive: true, force: true })\" && tsc -p tsconfig.json",
-    "type-check": "tsc -p tsconfig.json --noEmit",
+    "type-check": "tsc -p tsconfig.check.json",
     "test": "node --import tsx --test --test-timeout=15000 test/*.test.ts"
   },
   "dependencies": {
-    "@softmax-universe/runner": "workspace:^",
-    "@softmax-universe/sdk": "workspace:^",
+    "@mechane/client": "https://github.com/mechane-ai/mechane/releases/download/client-v0.1.0/mechane-client-0.1.0.tgz",
+    "@softmax-universe/protocol": "workspace:*",
+    "effect": "4.0.7",
     "zod": "4.4.3"
   },
   "devDependencies": {
+    "@softmax-universe/runner": "workspace:*",
     "@types/node": "24.13.6",
     "tsx": "4.23.1",
     "typescript": "7.0.2"

@@ -1,0 +1,46 @@
+{
+  "id": "named-entry-points-tsx",
+  "language": "Tsx",
+  "severity": "error",
+  "message": "Keep an index module to named re-exports; put declarations in their owning files.",
+  "files": ["**/index.{ts,tsx,mts,js,mjs}"],
+  "ignores": ["**/node_modules/**", "**/dist/**", ".contracts/**", ".local/**", "bazel-*/**"],
+  "rule":
+    {
+      "inside": { "kind": "program" },
+      "not":
+        {
+          "any":
+            [
+              { "kind": "comment" },
+              {
+                "all":
+                  [
+                    { "kind": "export_statement" },
+                    { "has": { "field": "source", "kind": "string" } },
+                    {
+                      "has":
+                        { "any": [{ "kind": "export_clause" }, { "kind": "namespace_export" }] },
+                    },
+                  ],
+              },
+            ],
+        },
+      "any":
+        [
+          { "kind": "import_statement" },
+          { "kind": "export_statement" },
+          { "kind": "lexical_declaration" },
+          { "kind": "variable_declaration" },
+          { "kind": "function_declaration" },
+          { "kind": "class_declaration" },
+          { "kind": "expression_statement" },
+          { "kind": "if_statement" },
+          { "kind": "for_statement" },
+          { "kind": "while_statement" },
+          { "kind": "try_statement" },
+          { "kind": "interface_declaration" },
+          { "kind": "type_alias_declaration" },
+        ],
+    },
+}

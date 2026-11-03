@@ -1,0 +1,28 @@
+{
+  "id": "key-value-store-ownership",
+  "language": "TypeScript",
+  "severity": "error",
+  "message": "Persistent key-value operations belong in a declared store.",
+  "files": ["platform/src/**/*.ts", "runner/src/**/*.ts"],
+  "ignores":
+    [
+      "**/node_modules/**",
+      "**/dist/**",
+      ".contracts/**",
+      ".local/**",
+      "bazel-*/**",
+      "platform/src/store/**",
+      "runner/src/storage/**",
+    ],
+  "rule":
+    {
+      "any":
+        [
+          { "pattern": "localStorage.$METHOD($$$ARGS)" },
+          { "pattern": "sessionStorage.$METHOD($$$ARGS)" },
+          { "pattern": "$CONTEXT.storage.get($$$ARGS)" },
+          { "pattern": "$CONTEXT.storage.put($$$ARGS)" },
+          { "pattern": "$CONTEXT.storage.delete($$$ARGS)" },
+        ],
+    },
+}

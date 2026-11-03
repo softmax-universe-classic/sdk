@@ -1,0 +1,24 @@
+{
+  "id": "recording-file-ownership",
+  "language": "TypeScript",
+  "severity": "error",
+  "message": "Only RunDirectory names its stored files and folders.",
+  "files": ["runner/src/**/*.ts"],
+  "ignores":
+    [
+      "**/node_modules/**",
+      "**/dist/**",
+      ".contracts/**",
+      ".local/**",
+      "bazel-*/**",
+      "runner/src/storage/**",
+    ],
+  "rule":
+    {
+      "all":
+        [
+          { "any": [{ "kind": "string" }, { "kind": "template_string" }] },
+          { "regex": "^[\\'\"`](run\\.json|\\.execution-lock|episodes)[\\'\"`]$" },
+        ],
+    },
+}

@@ -1,13 +1,12 @@
 {
   "name": "@softmax-universe/sdk",
-  "version": "0.2.0-alpha.1",
+  "version": "0.3.0-alpha.1",
   "description": "Record and exchange observable game episodes with Softmax Universe.",
   "license": "MIT",
   "files": [
     "dist",
     "README.md",
-    "LICENSE",
-    "schemas"
+    "LICENSE"
   ],
   "type": "module",
   "sideEffects": false,
@@ -15,18 +14,16 @@
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
-    },
-    "./schemas/run.schema.json": "./schemas/run.schema.json",
-    "./schemas/episode.schema.json": "./schemas/episode.schema.json",
-    "./schemas/run-export.schema.json": "./schemas/run-export.schema.json"
+    }
   },
   "scripts": {
-    "build": "node -e \"require('node:fs').rmSync('dist', { recursive: true, force: true })\" && tsc -p tsconfig.json && node scripts/export-schemas.mjs",
+    "build": "node -e \"require('node:fs').rmSync('dist', { recursive: true, force: true })\" && tsc -p tsconfig.json",
     "prepack": "pnpm run build",
-    "type-check": "tsc -p tsconfig.json --noEmit",
+    "type-check": "tsc -p tsconfig.check.json",
     "test": "node --import tsx --test test/*.test.ts"
   },
   "dependencies": {
+    "@softmax-universe/protocol": "workspace:*",
     "zod": "4.4.3"
   },
   "devDependencies": {

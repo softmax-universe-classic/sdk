@@ -1,0 +1,84 @@
+// Pin `eslint-plugin-boundaries` to 7.3.0 and `eslint-import-resolver-typescript` to 4.4.5, the versions this file was checked with, in the package that holds `.contracts` or in one above it.
+{
+  "jsPlugins": ["eslint-plugin-boundaries"],
+  "plugins": ["import"],
+  "rules": {
+    "boundaries/dependencies": [
+      "error",
+      {
+        "default": "allow",
+        "policies": [
+          {
+            "disallow": {
+              "dependency": {
+                "relationship": {
+                  "to": ["child", "descendant", "sibling", "uncle", "nephew", null]
+                }
+              },
+              "to": {
+                "element": {
+                  "fileInternalPath": "**/*.{ts,tsx,mts,cts,js,jsx,mjs,cjs}",
+                  "type": "folder"
+                }
+              }
+            }
+          },
+          {
+            "allow": {
+              "dependency": { "relationship": { "to": ["child", "sibling", "uncle"] } },
+              "to": {
+                "element": {
+                  "fileInternalPath": "index.{ts,tsx,mts,cts,js,jsx,mjs,cjs}",
+                  "type": "folder"
+                }
+              }
+            }
+          },
+          {
+            "allow": {
+              "to": {
+                "element": {
+                  "fileInternalPath": "index.{ts,tsx,mts,cts,js,jsx,mjs,cjs}",
+                  "parent": null,
+                  "type": "folder"
+                }
+              }
+            }
+          },
+          {
+            "allow": {
+              "dependency": { "relationship": { "to": ["child", "descendant"] } },
+              "from": {
+                "element": {
+                  "fileInternalPath": "index.{ts,tsx,mts,cts,js,jsx,mjs,cjs}",
+                  "type": "folder"
+                }
+              },
+              "to": { "element": { "type": "folder" } }
+            }
+          }
+        ]
+      }
+    ],
+    "boundaries/no-unknown-dependencies": "error",
+    "boundaries/no-unknown-files": "error",
+    "import/max-dependencies": ["error", { "ignoreTypeImports": false, "max": 10 }],
+    "import/no-cycle": ["error", { "ignoreTypes": false }]
+  },
+  // `boundaries/elements` makes every folder an element, the module that the dependency policies above protect.
+  // oxlint does not pass `settings` through `extends`, so copy this block into a configuration that extends this file; without it, `boundaries/no-unknown-files` fails on every file.
+  "settings": {
+    "boundaries/additional-dependency-nodes": [
+      { "kind": "type", "name": "type-import", "selector": "TSImportType > Literal" },
+      {
+        "kind": "value",
+        "name": "import-equals",
+        "selector": "TSExternalModuleReference > Literal"
+      }
+    ],
+    "boundaries/elements": [{ "pattern": "{.,}*", "type": "folder" }],
+    "boundaries/files": [{ "category": "root", "pattern": "{.,}*" }],
+    "boundaries/ignore": ["**/.*"],
+    "import/resolver": { "typescript": { "exportsFields": [], "symlinks": false } }
+  }
+}

@@ -1,0 +1,136 @@
+{
+  "packages": [
+    {
+      "name": "softmax-universe-sdk",
+      "manifest": "package.json",
+      "manager": "npm",
+      "ownership": "Developer checks and release composition.",
+      "dependencies": [],
+      "testSources": ["test/**", "tests/**", "**/*.test.*", "**/*.spec.*"],
+      "testSupport": false,
+      "builtins": ["cloudflare:workers"],
+      "tsconfig": ""
+    },
+    {
+      "name": "@softmax-universe/protocol",
+      "manifest": "protocol/package.json",
+      "manager": "npm",
+      "ownership": "Runtime-neutral recordings, validation, and game/policy interfaces.",
+      "dependencies": [],
+      "testSources": ["test/**", "tests/**", "**/*.test.*", "**/*.spec.*"],
+      "testSupport": false,
+      "tsconfig": "protocol/tsconfig.json",
+      "builtins": ["cloudflare:workers"]
+    },
+    {
+      "name": "@softmax-universe/sdk",
+      "manifest": "sdk/package.json",
+      "manager": "npm",
+      "ownership": "Recording and product HTTP client for independent games.",
+      "dependencies": [
+        {
+          "manifest": "protocol/package.json",
+          "testOnly": false
+        }
+      ],
+      "testSources": ["test/**", "tests/**", "**/*.test.*", "**/*.spec.*"],
+      "testSupport": false,
+      "tsconfig": "sdk/tsconfig.json",
+      "builtins": ["cloudflare:workers"]
+    },
+    {
+      "name": "@softmax-universe/runner",
+      "manifest": "runner/package.json",
+      "manager": "npm",
+      "ownership": "Local benchmark orchestration, durable recording, and transfer.",
+      "dependencies": [
+        {
+          "manifest": "sdk/package.json",
+          "testOnly": false
+        },
+        {
+          "manifest": "protocol/package.json",
+          "testOnly": false
+        },
+        {
+          "manifest": "integrations/model-policy/package.json",
+          "testOnly": false
+        }
+      ],
+      "testSources": ["test/**", "tests/**", "**/*.test.*", "**/*.spec.*"],
+      "testSupport": false,
+      "tsconfig": "runner/tsconfig.json",
+      "builtins": ["cloudflare:workers"]
+    },
+    {
+      "name": "@softmax-universe/model-policy",
+      "manifest": "integrations/model-policy/package.json",
+      "manager": "npm",
+      "ownership": "Foundation model calls adapted to Universe policy decisions.",
+      "dependencies": [
+        {
+          "manifest": "protocol/package.json",
+          "testOnly": false
+        }
+      ],
+      "testSources": ["test/**", "tests/**", "**/*.test.*", "**/*.spec.*"],
+      "testSupport": false,
+      "tsconfig": "integrations/model-policy/tsconfig.json",
+      "builtins": ["cloudflare:workers"]
+    },
+    {
+      "name": "@softmax-universe/mechane",
+      "manifest": "integrations/mechane/package.json",
+      "manager": "npm",
+      "ownership": "Mechane execution adapted to Universe policy decisions and evidence.",
+      "dependencies": [
+        {
+          "manifest": "protocol/package.json",
+          "testOnly": false
+        },
+        {
+          "manifest": "runner/package.json",
+          "testOnly": false
+        }
+      ],
+      "testSources": ["test/**", "tests/**", "**/*.test.*", "**/*.spec.*"],
+      "testSupport": false,
+      "tsconfig": "integrations/mechane/tsconfig.json",
+      "builtins": ["cloudflare:workers"]
+    }
+  ],
+  "exclusions": [
+    {
+      "pattern": "**/node_modules/**",
+      "reason": "Installed dependencies are third-party source."
+    },
+    {
+      "pattern": "**/dist/**",
+      "reason": "Compilers generate distribution output here."
+    },
+    {
+      "pattern": "**/.git/**",
+      "reason": "Git metadata is repository data."
+    },
+    {
+      "pattern": ".local/**",
+      "reason": "Ignored developer proofs and temporary working data."
+    },
+    {
+      "pattern": ".contracts/**",
+      "reason": "Versioned contract assets contain their own tool manifests."
+    },
+    {
+      "pattern": "bazel-*/**",
+      "reason": "Bazel generates action outputs and dependency trees."
+    },
+    {
+      "pattern": "release-artifacts/**",
+      "reason": "Checked release artifacts are generated output."
+    },
+    {
+      "pattern": "**/.wrangler/**",
+      "reason": "Wrangler generates local runtime state."
+    }
+  ]
+}

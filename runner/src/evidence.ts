@@ -1,8 +1,12 @@
-import { modelCallSchema, runtimeReferenceSchema, toolCallSchema } from "@softmax-universe/sdk";
-import type { Decision } from "@softmax-universe/sdk";
-import { RunnerError } from "./errors.js";
-import { checkSignal } from "./execution.js";
-import type { PolicyInput } from "./types.js";
+import {
+  modelCallSchema,
+  runtimeReferenceSchema,
+  toolCallSchema,
+} from "@softmax-universe/protocol";
+import type { Decision } from "@softmax-universe/protocol";
+import { RunnerError } from "./errors/index.js";
+import { checkSignal } from "./execution/index.js";
+import type { PolicyInput } from "@softmax-universe/protocol";
 
 export function decisionEvidence(
   decision: Decision,

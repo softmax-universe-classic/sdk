@@ -6,7 +6,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import test from "node:test";
 import { readRunDirectory, runBenchmark } from "@softmax-universe/runner";
-import type { Run } from "@softmax-universe/sdk";
+import type { Run } from "@softmax-universe/protocol";
 import { createMechanePolicy } from "../src/index.js";
 
 const scenarios = {
@@ -26,6 +26,21 @@ for (const scenario of ["answered", "disconnected", "refused"] as const) {
     let requestId = "";
     let deadlineAt = "";
     const started = new Date().toISOString();
+    const mech = {
+      id: "06dc1a52-fb67-437c-a018-b8458f44bc01",
+      revision: 1,
+      name: "Universe fixture",
+      model: "model",
+      status: "active",
+      creator_id: "19fda980-f506-491d-befc-cc104df4d0f7",
+      created_at: started,
+      forked_from: null,
+      instructions: null,
+      daily_cap_micros: 1000000,
+      active_revision: 1,
+      updated_at: started,
+      updater_id: "19fda980-f506-491d-befc-cc104df4d0f7",
+    };
     const server = createServer(async (request, response) => {
       assert.equal(request.headers.authorization, `Bearer ${apiKey}`);
       const chunks: Buffer[] = [];
@@ -33,12 +48,12 @@ for (const scenario of ["answered", "disconnected", "refused"] as const) {
       const body = JSON.parse(Buffer.concat(chunks).toString() || "{}");
       response.setHeader("Content-Type", "application/json");
       if (request.url?.endsWith("/mechs")) {
-        response.end(JSON.stringify({ id: "06dc1a52-fb67-437c-a018-b8458f44bc01", revision: 1 }));
+        response.end(JSON.stringify(mech));
         return;
       }
       if (request.url?.endsWith("/definition")) {
         archived = body.status === "archived";
-        response.end(JSON.stringify({ id: "06dc1a52-fb67-437c-a018-b8458f44bc01", revision: 2 }));
+        response.end(JSON.stringify({ ...mech, revision: 2, status: "archived" }));
         return;
       }
       if (request.url?.endsWith("/cancel")) {
@@ -68,6 +83,8 @@ for (const scenario of ["answered", "disconnected", "refused"] as const) {
                 id,
                 model: "model",
                 status: "settled",
+                requested_micros: 100,
+                settled_micros: 10,
                 decided_at: started,
                 settled_at: started,
                 basis: "usage",
@@ -121,6 +138,7 @@ for (const scenario of ["answered", "disconnected", "refused"] as const) {
                 id: "7cfa080c-4bd6-4f8a-9ebd-92b131993ee6",
                 model: "model",
                 status: "refused",
+                requested_micros: 100,
                 decided_at: started,
               },
             ],

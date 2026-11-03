@@ -1,0 +1,6 @@
+packages:
+  - sdk
+  - runner
+  - integrations/*
+
+minimumReleaseAge: 1440

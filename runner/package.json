@@ -1,6 +1,6 @@
 {
   "name": "@softmax-universe/runner",
-  "version": "0.3.0-alpha.1",
+  "version": "0.3.0-alpha.2",
   "description": "Run bounded local game benchmarks and upload saved Universe recordings.",
   "license": "MIT",
   "bin": {

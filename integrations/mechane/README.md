@@ -6,11 +6,11 @@ It is an optional Node package. The game remains authoritative over legal action
 Install the immutable public release artifact:
 
 ```sh
-pnpm add https://github.com/softmax-universe/sdk/releases/download/sdk-v0.3.0-alpha.1/softmax-universe-mechane-0.3.0-alpha.1.tgz
+pnpm add https://github.com/softmax-universe/sdk/releases/download/sdk-v0.3.0-alpha.2/softmax-universe-mechane-0.3.0-alpha.2.tgz
 ```
 
 Its runner and SDK dependencies resolve to the same release. This package is distributed through
-[GitHub releases](https://github.com/softmax-universe/sdk/releases/tag/sdk-v0.3.0-alpha.1).
+[GitHub releases](https://github.com/softmax-universe/sdk/releases/tag/sdk-v0.3.0-alpha.2).
 
 Create a policy with `createMechanePolicy({ endpoint, apiKey, workspaceId, model })` and pass it to
 the runner's `policies` map. The endpoint is an explicit Mechane origin, such as your Foundation

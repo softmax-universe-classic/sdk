@@ -4,10 +4,10 @@
 configured Universe API. It requires Node 24.14.1 or later. Games own their rules, legal actions, observations, and scores.
 
 ```sh
-pnpm add https://github.com/softmax-universe/sdk/releases/download/sdk-v0.3.0-alpha.3/softmax-universe-runner-0.3.0-alpha.3.tgz
+pnpm add https://github.com/softmax-universe-classic/sdk/releases/download/sdk-v0.3.0-alpha.4/softmax-universe-runner-0.3.0-alpha.4.tgz
 ```
 
-[Public releases](https://github.com/softmax-universe/sdk/releases) contain immutable package archives and their
+[Public releases](https://github.com/softmax-universe-classic/sdk/releases) contain immutable package archives and their
 checked source. The package name used in imports remains `@softmax-universe/runner`.
 
 ## Run a game
@@ -29,9 +29,9 @@ const result = await runBenchmark({
       open: () => ({ decide: ({ legalActions }) => ({ action: legalActions[0] }) }),
     },
     model: createModelPolicy({
-      apiKey: process.env.OPENROUTER_API_KEY!,
+      token: process.env.FOUNDATION_TOKEN!,
       model: "your-explicit-model-id",
-      endpoint: "https://openrouter.ai/api/v1/chat/completions",
+      endpoint: process.env.FOUNDATION_ENDPOINT!,
     }),
   },
   limits: {
@@ -72,18 +72,21 @@ one reserved slot. A policy calls `settleModelCalls` only after it can prove tha
 accounted for and no more work can start. Settlement releases unused slots. A timeout or uncertain remote result
 keeps unused reservations, including across later invocations. Rejected reservations must prevent dispatch.
 
-The supplied `createModelPolicy` uses `@softmax-foundation/models` for provider transport. Universe owns the game
-prompt and validates the returned JSON `actionIndex` against the legal actions. Invalid output ends the episode
-without repair; the game remains responsible for accepting the selected action. Provider requests have explicit
-input/output bounds, honor cancellation, and do not silently retry.
+The supplied `createModelPolicy` uses the public `@softmax-foundation/client` with an explicit Foundation endpoint
+and bearer grant. It persists a UUID and exact request before submission, then polls that call. Universe owns the
+game prompt and validates the returned JSON `actionIndex` against the legal actions. Invalid output ends the episode
+without repair; the game remains responsible for accepting the selected action. Foundation enforces the submitted
+deadline and output-token cap after the runner disconnects. Cancellation stops the client wait; it does not prove
+that remote execution stopped. An uncertain result retains its allowance and can be inspected with
+`models.getCall(id)`. The adapter never submits a replacement call automatically.
 
 For agent policies, the optional `@softmax-universe/mechane` package connects a session to Mechane's bounded-turn API.
 Each decision carries an explicit deadline, dispatch cap, and per-dispatch output-token cap. It records every available
 model/tool call and the remote request/turn reference. Mechane enforces the submitted limits even if the runner
 connection disappears. See that package's README for configuration.
 
-Recordings preserve requested inputs, actual returned models, response text, tool activity, latency, and returned
-usage. Unavailable values remain unknown. Credentials belong in environment variables, outside observations, policy
+Recordings preserve the exact submitted `request`, provider `input`, actual returned models, response text, tool activity,
+latency, and returned usage. Unavailable values remain unknown. Credentials belong in environment variables, outside observations, policy
 configuration, and recordings. Error messages use fixed codes and exclude raw provider errors and headers.
 
 ## Saved evidence

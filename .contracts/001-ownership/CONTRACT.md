@@ -12,7 +12,8 @@ repository-relative runtime imports.
 The `runner` package owns Node persistence, policy execution, and its CLI. `platform` owns product persistence and
 authorization. `client` renders the product API. Import another package through its declared exports.
 
-Foundation's public `models` package owns provider transport and model request evidence. Universe's `integrations/model-policy` package owns
+Foundation's hosted Models API owns provider transport and model request evidence. Its public `client` package owns
+authenticated submission and polling. Universe's `integrations/model-policy` package owns
 the game prompt and legal-action selection. `integrations/mechane` adapts the canonical published Mechane client and its bounded-turn protocol;
 Mechane owns durable agent execution. Do not copy provider transports or Mechane's execution engine into Universe.
 

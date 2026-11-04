@@ -5,7 +5,7 @@ import test from "node:test";
 import { readRunDirectory, runBenchmark } from "../src/index.js";
 import { directory, server, runDefinition, game, isCode } from "./support/index.js";
 
-test("cancellation aborts the real provider connection and preserves unknown model outcome", async (t) => {
+test("cancellation aborts the Foundation connection and preserves unknown model outcome", async (t) => {
   const path = await directory(t);
   const cancellation = new AbortController();
   const received = Promise.withResolvers<void>();
@@ -21,7 +21,7 @@ test("cancellation aborts the real provider connection and preserves unknown mod
     createGame: () => game(),
     signal: cancellation.signal,
     policies: {
-      model: createModelPolicy({ apiKey: "test-key", model: "requested-model", endpoint }),
+      model: createModelPolicy({ token: "test-key", model: "requested-model", endpoint }),
     },
   });
   await received.promise;
@@ -32,6 +32,6 @@ test("cancellation aborts the real provider connection and preserves unknown mod
   assert.equal(episode.outcome.kind, "cancelled");
   assert.equal(episode.decisions[0]?.status, "error");
   assert.equal(episode.decisions[0]?.modelCalls[0]?.output, null);
-  assert.ok(episode.decisions[0]?.modelCalls[0]?.input?.includes("legalActions"));
+  assert.ok(episode.decisions[0]?.modelCalls[0]?.request?.includes("legalActions"));
   assert.ok(!JSON.stringify(episode).includes("raw credentials"));
 });

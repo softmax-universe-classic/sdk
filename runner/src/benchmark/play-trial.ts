@@ -167,7 +167,7 @@ export async function playTrial(
           () =>
             policySession.decide({
               trial: structuredClone(trial),
-              decisionId: `${episode.id}-${decision.index}`,
+              decisionId: randomUUID(),
               participantId: participant.id,
               observation: structuredClone(observation),
               legalActions: structuredClone(legalActions),

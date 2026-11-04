@@ -1,6 +1,6 @@
 {
   "name": "@softmax-universe/model-policy",
-  "version": "0.3.0-alpha.3",
+  "version": "0.3.0-alpha.4",
   "description": "Choose legal game actions through Foundation Models.",
   "license": "MIT",
   "files": [
@@ -22,7 +22,7 @@
     "type-check": "tsc -p tsconfig.check.json"
   },
   "dependencies": {
-    "@softmax-foundation/models": "https://github.com/Metta-AI/foundation-models/releases/download/models-v0.1.2/softmax-foundation-models-0.1.2.tgz",
+    "@softmax-foundation/client": "https://github.com/softmax-universe/foundation-client/releases/download/client-v0.1.0/softmax-foundation-client-0.1.0.tgz",
     "@softmax-universe/protocol": "workspace:*"
   },
   "devDependencies": {

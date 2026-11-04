@@ -22,5 +22,5 @@ export async function server(
   });
   const address = instance.address();
   assert.ok(address && typeof address !== "string");
-  return `http://127.0.0.1:${address.port}/chat/completions`;
+  return `http://127.0.0.1:${address.port}`;
 }

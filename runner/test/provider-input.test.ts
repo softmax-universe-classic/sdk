@@ -9,7 +9,7 @@ test("request input limits prevent dispatch and raw transport errors cannot leak
   for (const tooLarge of [true, false]) {
     const path = await directory(t);
     let requests = 0;
-    const secret = "fixture-private-provider-key";
+    const secret = "fixture-private-foundation-token";
     const result = await runBenchmark({
       run: runDefinition(true),
       directory: path,
@@ -17,9 +17,9 @@ test("request input limits prevent dispatch and raw transport errors cannot leak
       createGame: () => game(),
       policies: {
         model: createModelPolicy({
-          apiKey: secret,
+          token: secret,
           model: "requested-model",
-          endpoint: "http://127.0.0.1:1/chat/completions",
+          endpoint: "http://127.0.0.1:1",
           maxInputChars: tooLarge ? 1 : 32_000,
           fetch: async () => {
             requests += 1;

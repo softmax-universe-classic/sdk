@@ -1,3 +1,6 @@
-import { createOpenRouterClient } from "@softmax-foundation/models";
+import type { FoundationClientOptions } from "@softmax-foundation/client";
 
-export type ModelPolicyOptions = Parameters<typeof createOpenRouterClient>[0];
+export type ModelPolicyOptions = FoundationClientOptions & {
+  model: string;
+  maxInputChars?: number;
+};

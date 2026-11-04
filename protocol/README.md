@@ -19,6 +19,7 @@ cancelled, incomplete, and missing work never become ordinary scores. A latency,
 recorded model call lacks that measurement or any reserved calls remain unresolved. With no calls or reservations,
 totals are zero. Every observed dispatch contributes independently. Tool calls and unresolved reservations have separate
 counts. Model-call evidence preserves the provider's resolved model while comparison rows identify the configured model.
+An optional `request` preserves the exact hosted request for recovery; `input` preserves the available provider input.
 
 ## Schemas
 

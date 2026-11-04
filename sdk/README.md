@@ -4,10 +4,10 @@ Record game decisions and upload saved work. This package works in browsers and 
 [Universe protocol](../protocol/README.md) for recording validation. The game remains responsible for legal actions and outcomes.
 
 ```sh
-pnpm add https://github.com/softmax-universe/sdk/releases/download/sdk-v0.3.0-alpha.3/softmax-universe-sdk-0.3.0-alpha.3.tgz
+pnpm add https://github.com/softmax-universe-classic/sdk/releases/download/sdk-v0.3.0-alpha.4/softmax-universe-sdk-0.3.0-alpha.4.tgz
 ```
 
-[Public releases](https://github.com/softmax-universe/sdk/releases) contain immutable package archives and their
+[Public releases](https://github.com/softmax-universe-classic/sdk/releases) contain immutable package archives and their
 checked source. The package name used in imports remains `@softmax-universe/sdk`.
 
 ## Recording

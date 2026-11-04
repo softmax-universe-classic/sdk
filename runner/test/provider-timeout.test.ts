@@ -16,7 +16,7 @@ test("a provider timeout consumes one reservation and persists a failed decision
     limits: { ...limits, decisionTimeoutMs: 300 },
     createGame: () => game(),
     policies: {
-      model: createModelPolicy({ apiKey: "test-key", model: "requested-model", endpoint }),
+      model: createModelPolicy({ token: "test-key", model: "requested-model", endpoint }),
     },
   });
   assert.equal(requests, 1);

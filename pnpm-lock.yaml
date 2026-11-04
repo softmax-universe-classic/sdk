@@ -63,9 +63,9 @@ importers:
 
   integrations/model-policy:
     dependencies:
-      '@softmax-foundation/models':
-        specifier: https://github.com/Metta-AI/foundation-models/releases/download/models-v0.1.2/softmax-foundation-models-0.1.2.tgz
-        version: https://github.com/Metta-AI/foundation-models/releases/download/models-v0.1.2/softmax-foundation-models-0.1.2.tgz
+      '@softmax-foundation/client':
+        specifier: https://github.com/softmax-universe/foundation-client/releases/download/client-v0.1.0/softmax-foundation-client-0.1.0.tgz
+        version: https://github.com/softmax-universe/foundation-client/releases/download/client-v0.1.0/softmax-foundation-client-0.1.0.tgz
       '@softmax-universe/protocol':
         specifier: workspace:*
         version: link:../../protocol
@@ -661,9 +661,9 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@softmax-foundation/models@https://github.com/Metta-AI/foundation-models/releases/download/models-v0.1.2/softmax-foundation-models-0.1.2.tgz':
-    resolution: {integrity: sha512-PMFTXFYWgV/B4DgMQWajyjdFt3An1RGaDVEq8UtE7uzZSwqA2l+JYu5o1mmJc73S6qSjJiNWdAQu2I9WQ+bnAQ==, tarball: https://github.com/Metta-AI/foundation-models/releases/download/models-v0.1.2/softmax-foundation-models-0.1.2.tgz}
-    version: 0.1.2
+  '@softmax-foundation/client@https://github.com/softmax-universe/foundation-client/releases/download/client-v0.1.0/softmax-foundation-client-0.1.0.tgz':
+    resolution: {integrity: sha512-tqXjao7djfILhdNV+lXRKsYUwRtqd94p9Tpt9ulQu6AnMzLC/r8hX0JzBMC+/1+LM5s4fFdETgE4bpnLHGnwFw==, tarball: https://github.com/softmax-universe/foundation-client/releases/download/client-v0.1.0/softmax-foundation-client-0.1.0.tgz}
+    version: 0.1.0
 
   '@types/esrecurse@4.3.1':
     resolution: {integrity: sha512-xJBAbDifo5hpffDBuHl0Y8ywswbiAp/Wi7Y/GtAgSlZyIABppyurxVueOPE8LUQOxdlgi6Zqce7uoEpqNTeiUw==}
@@ -1686,7 +1686,7 @@ snapshots:
   '@oxlint/binding-win32-x64-msvc@1.90.0':
     optional: true
 
-  '@softmax-foundation/models@https://github.com/Metta-AI/foundation-models/releases/download/models-v0.1.2/softmax-foundation-models-0.1.2.tgz':
+  '@softmax-foundation/client@https://github.com/softmax-universe/foundation-client/releases/download/client-v0.1.0/softmax-foundation-client-0.1.0.tgz':
     dependencies:
       effect: 4.0.7
 

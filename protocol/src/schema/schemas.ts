@@ -60,6 +60,7 @@ export const modelCallSchema = z.strictObject({
   requestedModel: z.string().min(1).max(200).nullable(),
   model: z.string().min(1).max(200).nullable(),
   input: z.string().max(200_000).nullable(),
+  request: z.string().max(200_000).optional(),
   output: z.string().max(200_000).nullable(),
   latencyMs: z.number().nonnegative().nullable(),
   status: z.enum(["pending", "completed", "failed", "unknown"]),

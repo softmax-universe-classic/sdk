@@ -1,6 +1,6 @@
 {
   "name": "@softmax-universe/mechane",
-  "version": "0.3.0-alpha.3",
+  "version": "0.3.0-alpha.4",
   "description": "Use bounded Mechane agent turns as Universe game policies.",
   "license": "MIT",
   "files": [

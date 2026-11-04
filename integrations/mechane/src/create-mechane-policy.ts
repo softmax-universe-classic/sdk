@@ -64,7 +64,7 @@ export function createMechanePolicy(suppliedOptions: MechanePolicyOptions): Poli
   return {
     definition: {
       kind: "mechane",
-      revision: "0.3.0-alpha.3",
+      revision: "0.3.0-alpha.4",
       model: options.model,
       configuration: { origin: transport.origin, workspaceId: options.workspaceId, instructions },
     },

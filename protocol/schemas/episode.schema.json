@@ -189,6 +189,10 @@
                     }
                   ]
                 },
+                "request": {
+                  "type": "string",
+                  "maxLength": 200000
+                },
                 "output": {
                   "anyOf": [
                     {

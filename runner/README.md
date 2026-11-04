@@ -4,7 +4,7 @@
 configured Universe API. It requires Node 24.14.1 or later. Games own their rules, legal actions, observations, and scores.
 
 ```sh
-pnpm add https://github.com/softmax-universe/sdk/releases/download/sdk-v0.3.0-alpha.2/softmax-universe-runner-0.3.0-alpha.2.tgz
+pnpm add https://github.com/softmax-universe/sdk/releases/download/sdk-v0.3.0-alpha.3/softmax-universe-runner-0.3.0-alpha.3.tgz
 ```
 
 [Public releases](https://github.com/softmax-universe/sdk/releases) contain immutable package archives and their

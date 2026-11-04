@@ -1,6 +1,6 @@
 {
   "name": "@softmax-universe/sdk",
-  "version": "0.3.0-alpha.2",
+  "version": "0.3.0-alpha.3",
   "description": "Record and exchange observable game episodes with Softmax Universe.",
   "license": "MIT",
   "files": [

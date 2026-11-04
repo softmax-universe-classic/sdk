@@ -1,6 +1,6 @@
 {
   "name": "@softmax-universe/protocol",
-  "version": "0.3.0-alpha.2",
+  "version": "0.3.0-alpha.3",
   "description": "Runtime-neutral game, policy, and recording contracts for Softmax Universe.",
   "license": "MIT",
   "files": [

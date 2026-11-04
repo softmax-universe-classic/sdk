@@ -54,7 +54,7 @@ export function createTransport(options: { endpoint: string; apiKey: string }) {
             credential,
             maxResponseBytes,
             timeout: Duration.seconds(15),
-            userAgent: "softmax-universe/0.3.0-alpha.2",
+            userAgent: "softmax-universe/0.3.0-alpha.3",
           }),
           { signal },
         );

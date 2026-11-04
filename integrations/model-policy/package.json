@@ -1,6 +1,6 @@
 {
   "name": "@softmax-universe/model-policy",
-  "version": "0.3.0-alpha.2",
+  "version": "0.3.0-alpha.3",
   "description": "Choose legal game actions through Foundation Models.",
   "license": "MIT",
   "files": [
